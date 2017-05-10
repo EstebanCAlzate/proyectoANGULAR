@@ -29,6 +29,7 @@ import { PostsResolve } from "./services/posts-resolve.service";
 import { PostService } from "./services/post.service";
 import { SearchBoxComponent } from "./components/search-box/search-box.component";
 import { UserPostsComponent } from "./components/user-posts/user-posts.component";
+import { TipificarFechaPipe } from "app/pipes/from-now.pipe";
 
 @NgModule({
     imports: [
@@ -58,7 +59,8 @@ import { UserPostsComponent } from "./components/user-posts/user-posts.component
         PostFormComponent,
         PostsListComponent,
         SearchBoxComponent,
-        UserPostsComponent
+        UserPostsComponent,
+        TipificarFechaPipe
     ],
     providers: [
         BackendUriProvider,
