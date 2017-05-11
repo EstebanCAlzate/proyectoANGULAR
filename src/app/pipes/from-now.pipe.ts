@@ -3,7 +3,7 @@ import * as moment from "moment";
 import "moment/locale/es";
 
 /*---------------------------------------------------------------------------------------------------------|
- | ~~~ Blue Path ~~~                                                                                       |
+ | ~~~ Blue Path ~~~    X                                                                                   |
  |---------------------------------------------------------------------------------------------------------|
  | Crea el pipe FromNowPipe. Su cometido es, partiendo de una fecha dada, retornar una cadena de texto     |
  | que exprese el tiempo que ha pasado desde dicha fecha hasta ahora. Por ejemplo: hace 2 horas. Para esta |
@@ -14,6 +14,6 @@ import "moment/locale/es";
  @Pipe({name: 'tipFecha'})
     export class TipificarFechaPipe implements PipeTransform {
         transform(fecha: number){
-            return moment().startOf('day').from(fecha);
+            return moment(fecha).fromNow();
         }
     }

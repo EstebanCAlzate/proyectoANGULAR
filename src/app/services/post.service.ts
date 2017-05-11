@@ -3,6 +3,7 @@ import { Http, Response } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
+import * as moment from "moment";
 import { BackendUri } from "./settings.service";
 import { Post } from "../models/post";
 
@@ -16,7 +17,7 @@ export class PostService {
     getPosts(): Observable<Post[]> {
 
         /*----------------------------------------------------------------------------------------------|
-         | ~~~ Pink Path ~~~                                                                            |
+         | ~~~ Pink Path ~~~                    X                                                        |
          |----------------------------------------------------------------------------------------------|
          | Pide al servidor que te retorne los posts ordenados de más reciente a menos, teniendo en     |
          | cuenta su fecha de publicación. Filtra también aquellos que aún no están publicados, pues no |
@@ -31,8 +32,10 @@ export class PostService {
          |----------------------------------------------------------------------------------------------*/
 
         return this._http
-                   .get(`${this._backendUri}/posts`)
-                   .map((response: Response) => Post.fromJsonToList(response.json()));
+                   .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${Date.now()}`)
+                   .map((response: Response) =>{
+                       return Post.fromJsonToList(response.json());
+                   });
     }
 
     getUserPosts(id: number): Observable<Post[]> {

@@ -9,11 +9,14 @@
 
 <!--
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-| Green Path                                                               |
+| Green Path        X                                                       |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Suscribe el componente PostPreviewComponent al evento que hayas definido |
 | en él para notificar los clics sobre los posts.                          |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 -->
 
-<post-preview *ngFor="let post of posts" [post]="post"></post-preview>
+<post-preview
+             *ngFor="let post of posts" [post]="post"
+             (seleccionado)="showPost(post)"
+></post-preview>

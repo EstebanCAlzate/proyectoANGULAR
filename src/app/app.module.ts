@@ -5,7 +5,7 @@ import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 /*----------------------------------------------------------|
- | ~~~ Blue Path ~~~                                        |
+ | ~~~ Blue Path ~~~    X                                    |
  |----------------------------------------------------------|
  | Importa FromNowPipe para poder usarlo en este documento. |
  |----------------------------------------------------------*/
@@ -41,7 +41,7 @@ import { TipificarFechaPipe } from "app/pipes/from-now.pipe";
     ],
 
     /*-----------------------------------------------|
-     | ~~~ Blue Path ~~~                             |
+     | ~~~ Blue Path ~~~       X                      |
      |-----------------------------------------------|
      | No olvides declarar FromNowPipe en el módulo. |
      |-----------------------------------------------*/
