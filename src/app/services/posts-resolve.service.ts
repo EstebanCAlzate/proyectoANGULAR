@@ -13,7 +13,7 @@ export class PostsResolve implements Resolve<Post[]> {
     resolve(route: ActivatedRouteSnapshot): Observable<Post[]> {
 
         /*-----------------------------------------------------------------------------------------|
-         | ~~~ Red Path ~~~                                                                        |
+         | ~~~ Red Path ~~~                        x                                                |
          |-----------------------------------------------------------------------------------------|
          | Modifica este Resolve para que, en caso de tener que obtener los posts correspondientes |
          | a un usuario, llame a la función 'getUserPosts()' del servicio PostService. Recuerda    |
@@ -21,13 +21,19 @@ export class PostsResolve implements Resolve<Post[]> {
          |-----------------------------------------------------------------------------------------*/
 
         /*-----------------------------------------------------------------------------------------|
-         | ~~~ Yellow Path ~~~                                                                     |
+         | ~~~ Yellow Path ~~~                    X                                            |
          |-----------------------------------------------------------------------------------------|
          | Modifica este Resolve para que, en caso de tener que obtener los posts correspondientes |
          | a una categoría, llame a la función 'getCategoryPosts()' del servicio PostService.      |
          | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
          |-----------------------------------------------------------------------------------------*/
 
-        return this._postService.getPosts();
+        if(route.url.length===1){
+            console.log('getpost')
+            return this._postService.getPosts();
+         }else{
+            console.log('getUserPost',route.url[2].path);
+            return this._postService.getUserPosts(parseInt(route.url[2].path));
+         }
     }
 }

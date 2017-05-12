@@ -5,15 +5,15 @@
     <div class="author">
         <!--
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-        | Red Path                                                        |
+        | Red Path                          x                              |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Un clic sobre el autor debería navegar a su colección de posts. |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
-        <span class="name blink-font">{{ post.author.name }}</span>
+        <span class="name blink-font" (click)="navAuth(post)">{{ post.author.name }}</span>
         <!--
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-        | Blue Path                                                                     |
+        | Blue Path     X                                                                |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Una vez tengas creado el pipe FromNowPipe, úsalo con la fecha de publicación. |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|

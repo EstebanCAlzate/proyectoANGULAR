@@ -19,12 +19,16 @@ export class PostsListComponent {
     @Input() posts: Post;
 
     /*------------------------------------------------------------------------------------------------------------------|
-     | ~~~ Red Path ~~~                                                                                                 |
+     | ~~~ Red Path ~~~                       x                                                                          |
      |------------------------------------------------------------------------------------------------------------------|
      | Maneja el evento del componente PostPreviewComponent que indica la selección del autor de un post y navega a la  |
      | dirección correspondiente. Recuerda que para hacer esto necesitas inyectar como dependencia el Router de la app. |
      | La ruta a navegar es '/posts/users', pasando como parámetro el identificador del autor.                          |
      |------------------------------------------------------------------------------------------------------------------*/
+     showAuth(post:Post){
+        console.log('viendo ',post.author.name);
+        this._router.navigate([`/posts/users/${post.author.id}`]);
+     }
 
     /*-----------------------------------------------------------------------------------------------------------------|
      | ~~~ Green Path ~~~                                                                                              |
@@ -35,7 +39,7 @@ export class PostsListComponent {
      |-----------------------------------------------------------------------------------------------------------------*/
 
     showPost(post: Post){
-        // console.log('llega al posts');
+         console.log('llega al posts');
          this._router.navigate([`/posts/${post.id}`]);
     }
 

@@ -1,6 +1,6 @@
 <!--
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-| Red Path                                                                 |
+| Red Path               x                                                  |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Suscribe el componente PostPreviewComponent al evento que hayas definido |
 | en él para notificar los clics sobre los autores de los posts.           |
@@ -18,5 +18,6 @@
 
 <post-preview
              *ngFor="let post of posts" [post]="post"
-             (seleccionado)="showPost(post)"
+             (seleccionadoPost)="showPost(post)"
+             (seleccionadoAuth)="showAuth(post)"
 ></post-preview>
