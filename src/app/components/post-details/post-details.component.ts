@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { Post } from "../../models/post";
+import { Category } from "../../models/category";
 
 @Component({
     templateUrl: "post-details.component.html",
@@ -9,9 +10,10 @@ import { Post } from "../../models/post";
 })
 export class PostDetailsComponent implements OnInit {
 
+
     post: Post;
 
-    constructor(private _activatedRoute: ActivatedRoute,private _router: Router) { }
+    constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
 
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post }) => this.post = data.post);
@@ -30,17 +32,21 @@ export class PostDetailsComponent implements OnInit {
      | pasando como parámetro el identificador del autor.                                                            |
      |---------------------------------------------------------------------------------------------------------------*/
     navAuth(post) {
-        console.log('navega hasta los posts del autor');
-        console.log('viendo ', post.author.name);
         this._router.navigate([`/posts/users/${post.author.id}`]);
     }
 
     /*--------------------------------------------------------------------------------------------------------------------|
-     | ~~~ Yellow Path ~~~                                                                                                |
+     | ~~~ Yellow Path ~~~                       x                                                                         |
      |--------------------------------------------------------------------------------------------------------------------|
      | Añade un manejador que navegue a la dirección correspondiente a los posts de la categoría indicada. Recuerda que   |
      | para hacer esto necesitas inyectar como dependencia el Router de la app. La ruta a navegar es '/posts/categories', |
      | pasando como parámetro el identificador de la categoría.                                                           |
      |--------------------------------------------------------------------------------------------------------------------*/
+    @Input() category: Category;
+
+    navCatg(category) {
+        console.log('navegamos a la lista de post', category);
+        this._router.navigate([`/posts/categories/${category.id}`]);
+    }
 
 }

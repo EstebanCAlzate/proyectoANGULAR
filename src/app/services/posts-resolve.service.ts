@@ -28,12 +28,12 @@ export class PostsResolve implements Resolve<Post[]> {
          | Recuerda mirar en los parámetros de la ruta, a ver qué encuentras.                      |
          |-----------------------------------------------------------------------------------------*/
 
-        if (route.params.userId) { 
-            console.log('getUserPost',route.url[2].path);
-             return this._postService.getUserPosts(parseInt(route.url[2].path));
-        } else {
-            console.log(route.params);
-            return this._postService.getPosts();
+        if (route.params.userId) {
+            return this._postService.getUserPosts(route.params.userId);
+        } else if (route.params.categoryId) {
+            console.log('estamos en la categorias: ',route.params.categoryId);
+            return this._postService.getCategoryPosts(route.params.categoryId);
         }
+        return this._postService.getPosts();
     }
 }
