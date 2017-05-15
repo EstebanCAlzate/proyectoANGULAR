@@ -86,13 +86,13 @@ export class PostService {
          |--------------------------------------------------------------------------------------------------*/
 
         return this._http
-            .get(`${this._backendUri}/posts`)
+            .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${Date.now()}`)
             .map((response: Response) => {
                 console.log(response.json());
+                console.log(id);
                 return Post.fromJsonToList(response.json().filter((elem: Post) => {
                     return elem.categories.findIndex((elem: any) => {
-                        console.log(elem);
-                        return elem.id === 1;
+                        return elem.id == id;
                     })!==-1;
                 }))
             });
