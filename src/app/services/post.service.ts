@@ -88,38 +88,35 @@ export class PostService {
         return this._http
             .get(`${this._backendUri}/posts`)
             .map((response: Response) => {
-                response.json().map((elemento:any)=>{
-                console.log('response : ',elemento.categories);//esto es otro array de objetos
-                //meter los post que sean validos en una lista y asi los imprimes todos
-                   let aux:boolean = elemento.categories.filter((category:any)=>{
-                        console.log('categoria seleccionada, ',category.id);  
-                        return category.id===1?true:false;
-                    })
-                    aux?listaPost.push(elemento):listaPost;
-                })
-               return Post.fromJsonToList(response.json())
+                console.log(response.json());
+                return Post.fromJsonToList(response.json().filter((elem: Post) => {
+                    return elem.categories.findIndex((elem: any) => {
+                        console.log(elem);
+                        return elem.id === 1;
+                    })!==-1;
+                }))
             });
-    
-}
 
-getPostDetails(id: number): Observable < Post > {
-    return this._http
-        .get(`${this._backendUri}/posts/${id}`)
-        .map((response: Response) => Post.fromJson(response.json()));
-}
+    }
 
-createPost(post: Post): Observable < Post > {
+    getPostDetails(id: number): Observable<Post> {
+        return this._http
+            .get(`${this._backendUri}/posts/${id}`)
+            .map((response: Response) => Post.fromJson(response.json()));
+    }
 
-    /*----------------------------------------------------------------------------------|
-     | ~~~ Purple Path ~~~                                                              |
-     |----------------------------------------------------------------------------------|
-     | Utiliza el cliente HTTP para guardar en servidor el post indicado. La ruta sobre |
-     | la cual tienes que hacer la petición POST es '/posts'. Recuerda que siempre que  |
-     | se crea una entidad en servidor es una buena práctica retornar la misma con los  |
-     | datos actualizados obtenidos tras la inserción; puedes usar la función estática  |
-     | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
-     |----------------------------------------------------------------------------------*/
+    createPost(post: Post): Observable<Post> {
 
-    return null;
-}
+        /*----------------------------------------------------------------------------------|
+         | ~~~ Purple Path ~~~                                                              |
+         |----------------------------------------------------------------------------------|
+         | Utiliza el cliente HTTP para guardar en servidor el post indicado. La ruta sobre |
+         | la cual tienes que hacer la petición POST es '/posts'. Recuerda que siempre que  |
+         | se crea una entidad en servidor es una buena práctica retornar la misma con los  |
+         | datos actualizados obtenidos tras la inserción; puedes usar la función estática  |
+         | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
+         |----------------------------------------------------------------------------------*/
+
+        return null;
+    }
 }
