@@ -21,7 +21,6 @@ export class CategoryBoxComponent {
 
     @Output() seleccionadoCatg: EventEmitter<Category> = new EventEmitter();
     notifSelectCategories(category: Category) {
-        console.log('Tag select: ', category);
         this.seleccionadoCatg.emit(category);
     }
 }

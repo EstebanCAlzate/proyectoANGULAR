@@ -25,7 +25,6 @@ export class PostPreviewComponent {
     @Output() seleccionadoPost: EventEmitter<Post> = new EventEmitter();
 
     notifiSelectAuth(post:Post):void{
-        console.log('seleccionado');
         this.seleccionadoAuth.emit(post);
     }
 

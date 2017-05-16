@@ -65,7 +65,7 @@ export class PostService {
     getCategoryPosts(id: number): Observable<Post[]> {
 
         /*--------------------------------------------------------------------------------------------------|
-         | ~~~ Yellow Path ~~~                                                                              |
+         | ~~~ Yellow Path ~~~                     X                                                         |
          |--------------------------------------------------------------------------------------------------|
          | Ahora mismo, esta función está obteniendo todos los posts existentes, y solo debería obtener     |
          | aquellos correspondientes a la categoría indicada. Añade los parámetros de búsqueda oportunos    |
@@ -88,8 +88,6 @@ export class PostService {
         return this._http
             .get(`${this._backendUri}/posts?_sort=publicationDate&_order=DESC&publicationDate_lte=${Date.now()}`)
             .map((response: Response) => {
-                console.log(response.json());
-                console.log(id);
                 return Post.fromJsonToList(response.json().filter((elem: Post) => {
                     return elem.categories.findIndex((elem: any) => {
                         return elem.id == id;

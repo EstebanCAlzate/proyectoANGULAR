@@ -26,7 +26,7 @@ export class PostsListComponent {
      | La ruta a navegar es '/posts/users', pasando como parámetro el identificador del autor.                          |
      |------------------------------------------------------------------------------------------------------------------*/
      showAuth(post:Post){
-        console.log('viendo ',post.author.name);
+        console.log('Author: ',post.author.name);
         this._router.navigate([`/posts/users/${post.author.id}`]);
      }
 
@@ -39,7 +39,7 @@ export class PostsListComponent {
      |-----------------------------------------------------------------------------------------------------------------*/
 
     showPost(post: Post){
-         console.log('llega al posts');
+         console.log('name : ',post.title);
          this._router.navigate([`/posts/${post.id}`]);
     }
 

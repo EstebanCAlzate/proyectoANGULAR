@@ -45,7 +45,7 @@ export class PostDetailsComponent implements OnInit {
     @Input() category: Category;
 
     navCatg(category) {
-        console.log('navegamos a la lista de post', category);
+        console.log('Category: ', category.name);
         this._router.navigate([`/posts/categories/${category.id}`]);
     }
 
