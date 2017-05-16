@@ -1,48 +1,41 @@
 <!--
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-| Purple Path                                                                                 |
+| Purple Path                             X                                                    |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 | Crea una 'template reference variable' del formulario: quizá la necesites. Además, suscribe |
 | el formulario al evento correspondiente para hacer 'submit' del mismo: no olvides pasar la  |
 | referencia del formulario en él.                                                            |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
 -->
-<form novalidate>
+<form novalidate #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
     <!--
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-    | Purple Path                                                                                     |
+    | Purple Path                                  X                                                   |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | El campo 'title' debe enlazarse al formulario a través de la directiva 'ngModel'. Recuerda usar |
     | el nombre que se ha definido en la entidad Post. Además, este campo debe ser obligatorio.       |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     -->
-    <input
-        type="text"
-        placeholder="Título"
-        class="u-full-width">
+    <input type="text" id="tittle" name="tittle" ngModel #tittleRef="ngModel" placeholder="Título" class="u-full-width" required>
     <!--
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-    | Purple Path                                                                                     |
+    | Purple Path                                      XX                                               |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | El campo 'intro' debe enlazarse al formulario a través de la directiva 'ngModel'. Recuerda usar |
     | el nombre que se ha definido en la entidad Post. Además, este campo debe ser obligatorio.       |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     -->
-    <textarea
-        placeholder="Introduce tu historia"
-        class="u-full-width georgia-font"
+    <textarea id="intro" name="intro" ngModel #introRef="ngModel" placeholder="Introduce tu historia" class="u-full-width georgia-font"
         autogrow></textarea>
     <!--
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-    | Purple Path                                                                                     |
+    | Purple Path                                X                                                     |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | El campo 'body' debe enlazarse al formulario a través de la directiva 'ngModel'. Recuerda usar  |
     | el nombre que se ha definido en la entidad Post. Además, este campo debe ser obligatorio.       |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     -->
-    <textarea
-        placeholder="Cuenta tu historia"
-        class="u-full-width georgia-font"
+    <textarea id="body" name="body" ngModel #bodyRef="ngModel" placeholder="Cuenta tu historia" class="u-full-width georgia-font"
         autogrow></textarea>
     <div>
         <div>
@@ -58,20 +51,16 @@
             </label>
         </div>
         <div>
-            <input
-                type="datetime-local"
-                name="publicationDate"
-                [min]="nowDatetimeLocal"
-                [ngModel]="nowDatetimeLocal">
+            <input type="datetime-local" name="publicationDate" [min]="nowDatetimeLocal" [ngModel]="nowDatetimeLocal">
         </div>
     </div>
     <!--
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
-    | Purple Path                                                              |
+    | Purple Path                           X                                   |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     | Deshabilita el botón 'Publicar' en caso de que el formulario no sea      |
     | válido. Para ello vas a necesitar acceder al 'FormGroup' del formulario. |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     -->
-    <button type="submit" class="button-primary u-pull-right">Publicar</button>
+    <button type="submit" class="button-primary u-pull-right" [disabled]="postForm.invalid">Publicar</button>
 </form>
