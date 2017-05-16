@@ -30,6 +30,8 @@ import { PostService } from "./services/post.service";
 import { SearchBoxComponent } from "./components/search-box/search-box.component";
 import { UserPostsComponent } from "./components/user-posts/user-posts.component";
 import { TipificarFechaPipe } from "app/pipes/from-now.pipe";
+import { EditViewComponent } from './components/edit-view/edit-view.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 @NgModule({
     imports: [
@@ -60,7 +62,9 @@ import { TipificarFechaPipe } from "app/pipes/from-now.pipe";
         PostsListComponent,
         SearchBoxComponent,
         UserPostsComponent,
-        TipificarFechaPipe
+        TipificarFechaPipe,
+        EditViewComponent,
+        EditFormComponent
     ],
     providers: [
         BackendUriProvider,

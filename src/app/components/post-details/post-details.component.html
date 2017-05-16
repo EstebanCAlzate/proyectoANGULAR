@@ -18,9 +18,14 @@
         | Una vez tengas creado el pipe FromNowPipe, úsalo con la fecha de publicación. |
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
+
+        <!--Broken white Path : Un clic sobre el elemento pencil navegara a una nueva vista para editar
+        -->
         <span class="date" >{{ post.publicationDate | tipFecha }}</span>
     </div>
+    <i class="fa fa-pencil-square-o  fa-2x" aria-hidden="true" (click)="navEdit(post)"></i>
 </div>
+<!--MIRAR ACA-->
 <div class="post">
     <h3>{{ post.title }}</h3>
     <img *ngIf="post.media" [src]="post.media" class="u-max-full-width">

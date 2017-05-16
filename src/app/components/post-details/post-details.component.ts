@@ -15,6 +15,8 @@ export class PostDetailsComponent implements OnInit {
 
     constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
 
+
+    // MIRAR ACA
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post }) => this.post = data.post);
         window.scrollTo(0, 0);
@@ -34,6 +36,13 @@ export class PostDetailsComponent implements OnInit {
     navAuth(post) {
         this._router.navigate([`/posts/users/${post.author.id}`]);
     }
+
+    // Broken white paht: Añadimos el manejadro que navegua a la direccion correspondiente
+
+    navEdit(post) {
+        this._router.navigate([`/posts/edit/${post.id}`]);
+    }
+
 
     /*--------------------------------------------------------------------------------------------------------------------|
      | ~~~ Yellow Path ~~~                       x                                                                         |
