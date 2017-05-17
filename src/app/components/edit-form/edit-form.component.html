@@ -1,30 +1,36 @@
-
-<form novalidate #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
-
-    <input type="text" id="tittle" name="tittle" ngModel #tittleRef="ngModel" placeholder="Título" class="u-full-width" required>
-  
-
-    <textarea id="intro" name="intro" ngModel #introRef="ngModel" placeholder="Introduce tu historia" class="u-full-width georgia-font"
-        autogrow></textarea>
-  <textarea id="body" name="body" ngModel #bodyRef="ngModel" placeholder="Cuenta tu historia" class="u-full-width georgia-font"
-        autogrow></textarea>
-    <div>
+<!--<form novalidate #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
+        <input type="text" id="tittle" name="tittle" ngModel #tittleRef="ngModel" placeholder="Título" class="u-full-width" required>
+        <div class="metadata">
+            <div class="post">
+                <h3> {{post.tittle}}</h3>
+            </div>
+        </div>
+        <textarea id="intro" name="intro" ngModel #introRef="ngModel" placeholder="Introduce tu historia" class="u-full-width georgia-font"
+            autogrow></textarea>
+        <textarea id="body" name="body" ngModel #bodyRef="ngModel" placeholder="Cuenta tu historia" class="u-full-width georgia-font"
+            autogrow></textarea>
         <div>
-            <label (click)="setScheduling(false)">
+            <div>
+                <label (click)="setScheduling(false)">
                 <span class="radio-input" [class.active]="!publicationDateScheduled"></span>
                 No programar:
             </label>
-        </div>
-        <div>
-            <label (click)="setScheduling(true)">
+            </div>
+            <div>
+                <label (click)="setScheduling(true)">
                 <span class="radio-input" [class.active]="publicationDateScheduled"></span>
                 Publicar en:
             </label>
+            </div>
+            <div>
+                <input type="datetime-local" name="publicationDate" [min]="nowDatetimeLocal" [ngModel]="nowDatetimeLocal">
+            </div>
         </div>
-        <div>
-            <input type="datetime-local" name="publicationDate" [min]="nowDatetimeLocal" [ngModel]="nowDatetimeLocal">
-        </div>
-    </div>
-    
-    <button type="submit" class="button-primary u-pull-right" [disabled]="postForm.invalid">Publicar</button>
-</form>
+
+        <button type="submit" class="button-primary u-pull-right" [disabled]="postForm.invalid">Publicar</button>
+</form>-->
+
+<div>
+    <h3>edit form</h3>
+    <h2>{{post.tittle}}</h2>
+</div>

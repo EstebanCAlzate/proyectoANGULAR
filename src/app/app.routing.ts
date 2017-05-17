@@ -9,6 +9,7 @@ import { UserPostsComponent } from "./components/user-posts/user-posts.component
 import { PostDetailsResolve } from "./services/post-details-resolve.service";
 import { PostsResolve } from "./services/posts-resolve.service";
 import { EditViewComponent } from "app/components/edit-view/edit-view.component";
+import { EditFormComponent } from "app/components/edit-form/edit-form.component";
 
 const routes: Routes = [
     {
@@ -44,7 +45,7 @@ const routes: Routes = [
         }
     },{
         path: "posts/edit/:postId",
-        component: EditViewComponent,
+        component:EditFormComponent
     },
     {
         path: "**",

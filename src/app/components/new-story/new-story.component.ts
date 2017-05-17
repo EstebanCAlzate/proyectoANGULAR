@@ -9,26 +9,26 @@ import { PostService } from "../../services/post.service";
     templateUrl: "new-story.component.html",
     styleUrls: ["new-story.component.css"]
 })
-export class NewStoryComponent implements OnDestroy {
+export class NewStoryComponent  {
 
-    private _postSubscription: Subscription;
+     private _postSubscription: Subscription;
 
-    constructor(
-        private _postService: PostService,
-        private _router: Router) { }
+     constructor(
+         private _postService: PostService,
+         private _router: Router) { }
 
-    ngOnDestroy(): void {
-        this._unsubscribePostCreation();
-    }
+     ngOnDestroy(): void {
+         this._unsubscribePostCreation();
+     }
 
-    createPost(post: Post): void {
-        this._unsubscribePostCreation();
-        this._postSubscription = this._postService.createPost(post).subscribe(() => this._router.navigate(["/"]));
-    }
+     createPost(post: Post): void {
+         this._unsubscribePostCreation();
+         this._postSubscription = this._postService.createPost(post).subscribe(() => this._router.navigate(["/"]));
+     }
 
-    private _unsubscribePostCreation(): void {
-        if (this._postSubscription) {
-            this._postSubscription.unsubscribe();
-        }
-    }
+     private _unsubscribePostCreation(): void {
+         if (this._postSubscription) {
+             this._postSubscription.unsubscribe();
+         }
+     }
 }
