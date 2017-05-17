@@ -29,7 +29,7 @@ export class PostPreviewComponent {
     }
 
     /*------------------------------------------------------------------------------------------------------------------|
-     | ~~~ Green Path ~~~                                                                                               |
+     | ~~~ Green Path ~~~             X                                                                                  |
      |------------------------------------------------------------------------------------------------------------------|
      | Expón un atributo de salida con el decorador correspondiente. El tipo de dicho atributo debe permitir la emisión |
      | de eventos; la idea es enviar al componente padre el post sobre el cuál se ha hecho clic. Y puesto que dicho     |

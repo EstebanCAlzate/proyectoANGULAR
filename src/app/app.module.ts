@@ -64,8 +64,7 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
         UserPostsComponent,
         TipificarFechaPipe,
         EditViewComponent,
-        EditFormComponent
-    ],
+        EditFormComponent    ],
     providers: [
         BackendUriProvider,
         CategoryService,

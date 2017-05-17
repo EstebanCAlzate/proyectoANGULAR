@@ -42,17 +42,6 @@
     font-size: 0.8em;
 }
 
-.metadata .fa{
-    display: inline;
-    padding-left: 470px;
-    size: 50px;
-}
-.fa:hover,
- .fa:focus,
- .fa:active {
-    transform: scale(1.1);
-}
-
 .post {
     margin-top: 10px;
 }

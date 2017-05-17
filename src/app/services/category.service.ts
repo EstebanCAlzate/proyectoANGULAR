@@ -15,13 +15,13 @@ export class CategoryService {
 
     getCategories(): Observable<Category[]> {
         return this._http
-                   .get(`${this._backendUri}/categories`)
-                   .map((response: Response) => Category.fromJsonToList(response.json()));
+            .get(`${this._backendUri}/categories`)
+            .map((response: Response) => Category.fromJsonToList(response.json()));
     }
 
     createCategory(category: Category): Observable<Category> {
         return this._http
-                   .post(`${this._backendUri}/categories`, category)
-                   .map((response: Response) => Category.fromJson(response.json));
+            .post(`${this._backendUri}/categories`, category)
+            .map((response: Response) => Category.fromJson(response.json));
     }
 }

@@ -42,6 +42,4 @@ export class PostsListComponent {
          console.log('name : ',post.title);
          this._router.navigate([`/posts/${post.id}`]);
     }
-
-
 }

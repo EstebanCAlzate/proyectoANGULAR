@@ -10,11 +10,9 @@ import { Category } from "../../models/category";
 })
 export class PostDetailsComponent implements OnInit {
 
-
     post: Post;
 
     constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
-
 
     // MIRAR ACA
     ngOnInit(): void {
@@ -37,10 +35,14 @@ export class PostDetailsComponent implements OnInit {
         this._router.navigate([`/posts/users/${post.author.id}`]);
     }
 
-    // Broken white paht: Añadimos el manejadro que navegua a la direccion correspondiente
-
+    // Broken white path: Añadimos el manejador que navega a la direccion correspondiente
     navEdit(post) {
         this._router.navigate([`/posts/edit/${post.id}`]);
+    }
+
+    //Broken red path: Añadimos el manejador que dara like.
+    eventLike(post){
+        console.log(post.tittle);
     }
 
 
@@ -57,5 +59,4 @@ export class PostDetailsComponent implements OnInit {
         console.log('Category: ', category.name);
         this._router.navigate([`/posts/categories/${category.id}`]);
     }
-
 }

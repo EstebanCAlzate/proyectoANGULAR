@@ -11,6 +11,7 @@
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
         <span class="name blink-font" (click)="navAuth(post)">{{ post.author.name }}</span>
+        <span>{{post.id}}</span>
         <!--
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Blue Path     X                                                                |
@@ -19,11 +20,12 @@
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
 
-        <!--Broken white Path : Un clic sobre el elemento pencil navegara a una nueva vista para editar
+        <!--Broken white Path : Un click sobre el elemento pencil navegara a una nueva vista para editar
         -->
-        <span class="date" >{{ post.publicationDate | tipFecha }}</span>
+        <span class="date">{{ post.publicationDate | tipFecha }}</span>
     </div>
-    <i class="fa fa-pencil-square-o  fa-2x" aria-hidden="true" (click)="navEdit(post)"></i>
+    <i class="like fa fa-thumbs-o-up fa-2x" aria-hidden="true" (click)="eventLike($event)"></i>
+    <i class="edit fa fa-pencil-square-o  fa-2x" aria-hidden="true" (click)="navEdit(post)"></i>
 </div>
 <!--MIRAR ACA-->
 <div class="post">
@@ -40,8 +42,6 @@
     | en él para notificar los clics sobre las categorías del post.            |
     |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
     -->
-    <category-box
-                 [categories]="post.categories"
-                 (seleccionadoCatg)="navCatg($event)">
+    <category-box [categories]="post.categories" (seleccionadoCatg)="navCatg($event)">
     </category-box>
 </div>
