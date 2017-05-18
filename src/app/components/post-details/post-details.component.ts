@@ -21,8 +21,10 @@ export class PostDetailsComponent implements OnInit {
         this._activatedRoute.data.forEach((data: { post: Post }) => this.post = data.post);
         window.scrollTo(0, 0);
         User.defaultUser().id === this.post.author.id
-            ? document.getElementById('edit').style.display = 'inline'
-            : document.getElementById('edit').style.display = 'none'
+            ? (document.getElementById('edit').style.display = 'inline',
+                document.getElementById('delete').style.display = 'inline')
+            : (document.getElementById('edit').style.display = 'none',
+                document.getElementById('delete').style.display = 'none')
     }
 
     plainTextToHtml(text: string): string {
@@ -47,7 +49,10 @@ export class PostDetailsComponent implements OnInit {
 
     //Broken red path: Añadimos el manejador que dara like.
     eventLike(post) {
-        console.log('LIKE', post.title);
+        console.log('LIKE', post.likes);
+        post.likes = post.likes + 1;
+        console.log('LIKE', post.likes);
+        document.getElementById('like').style.color='lightgreen';
     }
 
     delete(post) {

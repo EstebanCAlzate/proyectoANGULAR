@@ -23,13 +23,11 @@
         -->
         <span class="date">{{ post.publicationDate | tipFecha }}</span>
     </div>
-    <i class="like fa fa-thumbs-o-up fa-2x" aria-hidden="true" (click)="eventLike(post)"></i>
-    <i id="edit" class="edit fa fa-pencil-square-o  fa-2x" 
-            aria-hidden="true" 
-            (click)="navEdit(post)"></i>
-    <i id="delete" class="fa fa-trash fa-2x" 
-            aria-hidden="true"
-            (click)=delete(post)></i>
+    <div class=" hvr-pulse-grow" href="#">
+        <i id="like" class="like fa fa-thumbs-o-up fa-2x" aria-hidden="true" (click)="eventLike(post)"></i>
+    </div>
+    <i id="edit" class="edit fa fa-pencil-square-o  fa-2x" aria-hidden="true" (click)="navEdit(post)"></i>
+    <i id="delete" class="fa fa-trash fa-2x" aria-hidden="true" (click)=delete(post)></i>
 </div>
 <div class="post">
     <h3>{{ post.title }}</h3>
