@@ -5,7 +5,7 @@ import "rxjs/add/operator/map";
 
 import * as moment from "moment";
 import { BackendUri } from "./settings.service";
-import { Post } from "../models/post";
+import { Post } from '../models/post';
 
 @Injectable()
 export class PostService {
@@ -91,7 +91,7 @@ export class PostService {
                 return Post.fromJsonToList(response.json().filter((elem: Post) => {
                     return elem.categories.findIndex((elem: any) => {
                         return elem.id == id;
-                    })!==-1;
+                    }) !== -1;
                 }))
             });
 
@@ -99,7 +99,6 @@ export class PostService {
 
     getPostDetails(id: number): Observable<Post> {
         console.log('id', id);
-        
         return this._http
             .get(`${this._backendUri}/posts/${id}`)
             .map((response: Response) => Post.fromJson(response.json()));
@@ -116,16 +115,28 @@ export class PostService {
          | datos actualizados obtenidos tras la inserción; puedes usar la función estática  |
          | 'fromJson() para crar un nuevo objeto Post basado en la respuesta HTTP obtenida. |
          |----------------------------------------------------------------------------------*/
-        console.log('Posted: ',post.title);
-                
+        console.log('Posted: ', post.title);
+
         return this._http
             .post(`${this._backendUri}/posts`, post)
             .map(response => Post.fromJson(response.json()));
     }
 
-    deletePost(post:Post): Observable<any>{
-        console.log('delete: ',post.id);
+    deletePost(post: Post): Observable<any> {
+        console.log('delete: ', post.id);
         return this._http
             .delete(`${this._backendUri}/posts/${post.id}`);
     }
+
+    // return this._http
+    // .put(`${this._direcciones.servidor}/contactos/${contacto.id}`, contacto)
+    // .map(res => Contacto.desdeJSON(res.json()));
+
+    editPost(post: Post): Observable<any> {
+        return this._http
+            .put(`${this._backendUri}/posts/${post.id}`, post)
+            .map(response => Post.fromJson(response.json()));
+    }
+
+
 }

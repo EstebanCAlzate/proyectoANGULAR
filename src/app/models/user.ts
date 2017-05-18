@@ -5,7 +5,8 @@ export class User {
         public name: string,
         public username: string,
         public email: string,
-        public avatar: string
+        public avatar: string,
+        public postLike: Boolean[]
     ) { }
 
     static fromJson(json: any): User {
@@ -14,7 +15,8 @@ export class User {
             json.name,
             json.username,
             json.email,
-            json.avatar
+            json.avatar,
+            json.postLike
         );
     }
 
@@ -24,7 +26,8 @@ export class User {
             "KeepCoder",
             "keepcoder",
             "keepcoder@postium.com",
-            "assets/images/keepcoder.jpg"
+            "assets/images/keepcoder.jpg",
+            [    ]
         )
     }
 }

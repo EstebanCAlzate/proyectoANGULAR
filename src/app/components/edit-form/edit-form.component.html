@@ -1,6 +1,7 @@
-<form novalidate #postForm="ngForm" (ngSubmit)="submitPost(postForm)">
+<form novalidate #editForm="ngForm" (ngSubmit)="submitPost(editForm)">
     <input type="text" id="tittle" name="tittle" ngModel='{{post.title}}' #tittleRef="ngModel" placeholder="Título" class="u-full-width"
         required>
+    <textarea id="id" name="id" ngModel="{{post.id}}" #introRef="ngModel" style="display:none"></textarea>
     <div class="metadata">
         <textarea id="intro" name="intro" ngModel='{{post.intro}}' #introRef="ngModel" placeholder="Introduce tu historia" class="u-full-width georgia-font"
             autogrow></textarea>
@@ -23,6 +24,6 @@
                 <input type="datetime-local" name="publicationDate" [min]="nowDatetimeLocal" [ngModel]="nowDatetimeLocal">
             </div>
         </div>
-        <button type="submit" class="button-primary u-pull-right" [disabled]="postForm.invalid">Publicar</button>
+        <button type="submit" class="button-primary u-pull-right" [disabled]="editForm.invalid">Publicar</button>
     </div>
 </form>

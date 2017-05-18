@@ -13,7 +13,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app.routing";
 import { AutoGrowDirective } from "./directives/auto-grow.directive";
-import { BackendUriProvider} from "./services/settings.service";
+import { BackendUriProvider } from "./services/settings.service";
 import { CategoryBoxComponent } from "./components/category-box/category-box.component";
 import { CategoryPostsComponent } from "./components/category-posts/category-posts.component";
 import { CategoryService } from "./services/category.service";
@@ -64,14 +64,14 @@ import { EditViewComponent } from "app/components/edit-view/edit-view.component"
         UserPostsComponent,
         TipificarFechaPipe,
         EditFormComponent,
-        EditViewComponent    ],
+        EditViewComponent
+    ],
     providers: [
         BackendUriProvider,
         CategoryService,
         PostDetailsResolve,
         PostService,
-        PostsResolve,
-    ],
+        PostsResolve],
     bootstrap: [
         AppComponent
     ]

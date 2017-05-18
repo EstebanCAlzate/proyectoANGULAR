@@ -13,8 +13,12 @@ import { PostService } from "app/services/post.service";
 export class PostDetailsComponent implements OnInit {
 
     post: Post;
+    user: User = User.defaultUser();
+    liked: Boolean = false;
 
-    constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _postService: PostService) { }
+    constructor(private _activatedRoute: ActivatedRoute,
+        private _router: Router,
+        private _postService: PostService) { }
 
     // MIRAR ACA
     ngOnInit(): void {
@@ -49,10 +53,16 @@ export class PostDetailsComponent implements OnInit {
 
     //Broken red path: Añadimos el manejador que dara like.
     eventLike(post) {
-        console.log('LIKE', post.likes);
-        post.likes = post.likes + 1;
-        console.log('LIKE', post.likes);
-        document.getElementById('like').style.color='lightgreen';
+        post.author.postLike[User.defaultUser().id]
+        ?(post.likes = post.likes - 1,
+            document.getElementById('like').style.color = 'black',
+            post.author.postLike[User.defaultUser().id] = false,
+            this.liked = false
+        ):(post.likes = post.likes + 1,
+            document.getElementById('like').style.color = 'lightgreen',
+            post.author.postLike[User.defaultUser().id] = true,
+            this.liked = true);
+        this._postService.editPost(post).subscribe();
     }
 
     delete(post) {

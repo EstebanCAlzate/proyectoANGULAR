@@ -2,7 +2,7 @@ import { Category } from "./category";
 import { User } from "./user";
 
 export class Post {
-    
+
     private constructor(
         public id: number,
         public title: string,
@@ -25,8 +25,7 @@ export class Post {
             json.publicationDate,
             json.categories,
             json.author,
-            json.likes
-        );
+            json.likes);
     }
 
     static fromJsonToList(json: any): Post[] {
