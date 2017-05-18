@@ -11,7 +11,6 @@
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         -->
         <span class="name blink-font" (click)="navAuth(post)">{{ post.author.name }}</span>
-        <span>{{post.id}}</span>
         <!--
         |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|
         | Blue Path     X                                                                |
@@ -24,8 +23,10 @@
         -->
         <span class="date">{{ post.publicationDate | tipFecha }}</span>
     </div>
-    <i class="like fa fa-thumbs-o-up fa-2x" aria-hidden="true" (click)="eventLike($event)"></i>
-    <i class="edit fa fa-pencil-square-o  fa-2x" aria-hidden="true" (click)="navEdit(post)"></i>
+    <i class="like fa fa-thumbs-o-up fa-2x" aria-hidden="true" (click)="eventLike(post)"></i>
+    <i id="edit" class="edit fa fa-pencil-square-o  fa-2x" 
+            aria-hidden="true" 
+            (click)="navEdit(post)"></i>
 </div>
 <!--MIRAR ACA-->
 <div class="post">

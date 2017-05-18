@@ -43,9 +43,12 @@ const routes: Routes = [
         resolve: {
             post: PostDetailsResolve
         }
-    },{
+    }, {
         path: "posts/edit/:postId",
-        component:EditFormComponent
+        component: EditViewComponent,
+        resolve: {
+             post: PostDetailsResolve
+         }
     },
     {
         path: "**",

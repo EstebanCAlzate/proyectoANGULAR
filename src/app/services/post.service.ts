@@ -98,6 +98,8 @@ export class PostService {
     }
 
     getPostDetails(id: number): Observable<Post> {
+        console.log('id', id);
+        
         return this._http
             .get(`${this._backendUri}/posts/${id}`)
             .map((response: Response) => Post.fromJson(response.json()));

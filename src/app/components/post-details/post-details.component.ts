@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 
 import { Post } from "../../models/post";
+import { User } from "../../models/user";
 import { Category } from "../../models/category";
 
 @Component({
@@ -18,6 +19,9 @@ export class PostDetailsComponent implements OnInit {
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post }) => this.post = data.post);
         window.scrollTo(0, 0);
+        User.defaultUser().id === this.post.author.id
+            ?document.getElementById('edit').style.display = 'inline'
+            :document.getElementById('edit').style.display = 'none'
     }
 
     plainTextToHtml(text: string): string {
@@ -37,12 +41,16 @@ export class PostDetailsComponent implements OnInit {
 
     // Broken white path: Añadimos el manejador que navega a la direccion correspondiente
     navEdit(post) {
-        this._router.navigate([`/posts/edit/${post.id}`]);
+        this._router.navigateByUrl(`/posts/edit/${post.id}`);
     }
 
     //Broken red path: Añadimos el manejador que dara like.
-    eventLike(post){
-        console.log(post.tittle);
+    eventLike(post) {
+        console.log('LIKE',post.title);
+    }
+
+    isAuthor(post): boolean {
+        return User.defaultUser().id === post.author.id
     }
 
 
