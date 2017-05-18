@@ -122,4 +122,10 @@ export class PostService {
             .post(`${this._backendUri}/posts`, post)
             .map(response => Post.fromJson(response.json()));
     }
+
+    deletePost(post:Post): Observable<any>{
+        console.log('delete: ',post.id);
+        return this._http
+            .delete(`${this._backendUri}/posts/${post.id}`);
+    }
 }

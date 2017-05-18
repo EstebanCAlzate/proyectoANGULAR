@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Post } from "../../models/post";
 import { User } from "../../models/user";
 import { Category } from "../../models/category";
+import { PostService } from "app/services/post.service";
 
 @Component({
     templateUrl: "post-details.component.html",
@@ -13,15 +14,15 @@ export class PostDetailsComponent implements OnInit {
 
     post: Post;
 
-    constructor(private _activatedRoute: ActivatedRoute, private _router: Router) { }
+    constructor(private _activatedRoute: ActivatedRoute, private _router: Router, private _postService: PostService) { }
 
     // MIRAR ACA
     ngOnInit(): void {
         this._activatedRoute.data.forEach((data: { post: Post }) => this.post = data.post);
         window.scrollTo(0, 0);
         User.defaultUser().id === this.post.author.id
-            ?document.getElementById('edit').style.display = 'inline'
-            :document.getElementById('edit').style.display = 'none'
+            ? document.getElementById('edit').style.display = 'inline'
+            : document.getElementById('edit').style.display = 'none'
     }
 
     plainTextToHtml(text: string): string {
@@ -46,7 +47,13 @@ export class PostDetailsComponent implements OnInit {
 
     //Broken red path: Añadimos el manejador que dara like.
     eventLike(post) {
-        console.log('LIKE',post.title);
+        console.log('LIKE', post.title);
+    }
+
+    delete(post) {
+        this._postService.deletePost(post).subscribe(() => {
+            this._router.navigate([``]);
+        });
     }
 
     isAuthor(post): boolean {
