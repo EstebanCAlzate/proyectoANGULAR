@@ -16,7 +16,7 @@ export class PostsListComponent {
     constructor(
         private _router: Router,) { }
 
-    @Input() posts: Post;
+    @Input() posts: Post[];
 
     /*------------------------------------------------------------------------------------------------------------------|
      | ~~~ Red Path ~~~                       x                                                                          |

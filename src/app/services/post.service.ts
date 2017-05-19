@@ -59,7 +59,8 @@ export class PostService {
 
         return this._http
             .get(`${this._backendUri}/posts?author.id=${id}&_sort=publicationDate&_order=DESC&publicationDate_lte=${Date.now()}`)
-            .map((response: Response) => Post.fromJsonToList(response.json()));
+            .map((response: Response) =>
+                Post.fromJsonToList(response.json()));
     }
 
     getCategoryPosts(id: number): Observable<Post[]> {
@@ -128,15 +129,19 @@ export class PostService {
             .delete(`${this._backendUri}/posts/${post.id}`);
     }
 
-    // return this._http
-    // .put(`${this._direcciones.servidor}/contactos/${contacto.id}`, contacto)
-    // .map(res => Contacto.desdeJSON(res.json()));
-
     editPost(post: Post): Observable<any> {
         return this._http
             .put(`${this._backendUri}/posts/${post.id}`, post)
             .map(response => Post.fromJson(response.json()));
     }
 
+    searchPost(search: String):Observable<Post[]>
+    {
+        return this._http
+            .get(`${this._backendUri}/posts?q=${search}`)
+            .map((response: Response) => {
+                return Post.fromJsonToList(response.json());
+            });
 
+    }
 }

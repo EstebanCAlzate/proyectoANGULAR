@@ -10,6 +10,7 @@ import { PostDetailsResolve } from "./services/post-details-resolve.service";
 import { PostsResolve } from "./services/posts-resolve.service";
 import { EditViewComponent } from "app/components/edit-view/edit-view.component";
 import { EditFormComponent } from "app/components/edit-form/edit-form.component";
+import { HeaderBarComponent } from './components/header-bar/header-bar.component';
 
 const routes: Routes = [
     {
@@ -48,6 +49,13 @@ const routes: Routes = [
         component: EditViewComponent,
         resolve: {
              post: PostDetailsResolve
+         }
+    },
+    { 
+        path: "posts/search/:search",
+        component: NewsComponent,
+        resolve: {
+             posts: PostsResolve
          }
     },
     {
